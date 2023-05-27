@@ -62,8 +62,7 @@ class forward():
                 await client.send_file(send_to_id, input_photo)
             else:
                 caption = mess
-                pass
-                #await client.send_file(send_to_id, input_photo, caption=caption)
+                await client.send_file(send_to_id, input_photo, caption=caption)
         elif media_type == 'MessageMediaDocument':
             document = message.document
             video = await client.download_media(document)
