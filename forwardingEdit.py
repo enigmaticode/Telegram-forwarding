@@ -62,7 +62,8 @@ class forward():
                 await client.send_file(send_to_id, input_photo)
             else:
                 caption = mess
-                await client.send_file(send_to_id, input_photo, caption=caption)
+                pass
+                #await client.send_file(send_to_id, input_photo, caption=caption)
         elif media_type == 'MessageMediaDocument':
             document = message.document
             video = await client.download_media(document)
@@ -74,6 +75,10 @@ class forward():
                 caption = mess
                 await client.send_file(send_to_id, input_video, caption=caption)
         elif (mess != '' or mess != ' ') and message.media == None:
+            print(message)
+            await client.send_message(send_to_id, mess)
+        elif message.out == False and message.fwd_from != None:
+            print(message)
             await client.send_message(send_to_id, mess)
         else:
             print(f"SENDING THIS HAS NOT YET BEEN ENABLED")
